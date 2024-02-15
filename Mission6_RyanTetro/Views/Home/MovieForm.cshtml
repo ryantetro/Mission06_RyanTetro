@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Submition
+<h1>What is your Favorite Movie?</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Category">Category</label>
+        <input asp-for="Category" type="text" class="form-control" id="category" name="Category" required>
+    </div>
+    <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <input asp-for="Title" type="text" class="form-control" id="title" name="Title" required>
+    </div>
+    <div class="form-group">
+        <label asp-for="Year">Year</label>
+        <input asp-for="Year" type="number" class="form-control" id="year" name="Year" required>
+    </div>
+    <div class="form-group">
+        <label asp-for="Director">Director</label>
+        <input asp-for="Director" type="text" class="form-control" id="director" name="Director" required>
+    </div>
+    <div class="form-group">
+        <label asp-for="Rating">Rating</label>
+        <select asp-for="Rating" class="form-control" id="rating" name="Rating" required>
+            <option>G</option>
+            <option>PG</option>
+            <option>PG-13</option>
+            <option>R</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Edited">Edited</label>
+        <select asp-for="Edited" class="form-control" id="edited" name="Edited">
+            <option value="true">Yes</option>
+            <option value="false" selected>No</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="LentTo">Lent To:</label>
+        <input asp-for="LentTo" type="text" class="form-control" id="lentTo" name="LentTo">
+    </div>
+    <div class="form-group">
+        <label asp-for="Notes">Notes (25 characters max)</label>
+        <input asp-for="Notes" type="text" class="form-control" id="notes" name="Notes" maxlength="25">
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
