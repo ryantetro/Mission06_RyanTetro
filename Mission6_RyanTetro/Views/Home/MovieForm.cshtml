@@ -1,29 +1,52 @@
-﻿@*
+﻿@using Mission06_RyanTetro.Models
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
 
-@model Submition
+@model Movie
+<!-- Heading for the form -->
 <h1>What is your Favorite Movie?</h1>
 
 <form method="post">
+
+    <!-- Hidden field for MovieId to uniquely identify the movie; useful for edit scenarios -->
+    <input type="hidden" asp-for="MovieId" />
+
+
+    <!-- Form group for movie Category selection -->
     <div class="form-group">
-        <label asp-for="Category">Category</label>
-        <input asp-for="Category" type="text" class="form-control" id="category" name="Category" required>
+        <label asp-for="CategoryID">Category</label>
+        <select asp-for="CategoryID" class="form-control" id="Category" required>
+            <option value="" disabled selected>Select a Category</option>
+            <!-- Dynamically display an option for each category in the Categories table using a ViewBag -->
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        </select>
     </div>
+
+    <!-- Form group for entering movie Title -->
     <div class="form-group">
         <label asp-for="Title">Title</label>
         <input asp-for="Title" type="text" class="form-control" id="title" name="Title" required>
     </div>
+
+    <!-- Form group for entering movie Year -->
     <div class="form-group">
         <label asp-for="Year">Year</label>
         <input asp-for="Year" type="number" class="form-control" id="year" name="Year" required>
     </div>
+
+    <!-- Form group for entering movie Director -->
     <div class="form-group">
         <label asp-for="Director">Director</label>
         <input asp-for="Director" type="text" class="form-control" id="director" name="Director" required>
     </div>
+
+    <!-- Form group for selecting movie Rating -->
     <div class="form-group">
         <label asp-for="Rating">Rating</label>
         <select asp-for="Rating" class="form-control" id="rating" name="Rating" required>
@@ -33,22 +56,43 @@
             <option>R</option>
         </select>
     </div>
+
+    <!-- Form group for selecting if the movie was Edited -->
     <div class="form-group">
         <label asp-for="Edited">Edited</label>
-        <select asp-for="Edited" class="form-control" id="edited" name="Edited">
+        <select asp-for="Edited" class="form-control" id="Edited" name="Edited">
+            <option value="false">No</option>
             <option value="true">Yes</option>
-            <option value="false" selected>No</option>
         </select>
     </div>
+
+    <!-- Form group for entering who the movie was Lent To -->
     <div class="form-group">
         <label asp-for="LentTo">Lent To:</label>
         <input asp-for="LentTo" type="text" class="form-control" id="lentTo" name="LentTo">
     </div>
+
+    <!-- Form group for selecting if the movie was Copied to Plex -->
+    <div class="form-group">
+        <label asp-for="CopiedToPlex">Copied to Plex</label>
+        <select asp-for="CopiedToPlex" class="form-control" id="CopiedToPlex" name="CopiedToPlex">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </div>
+
+    <!-- Form group for entering any notes about the movie if the movie-->
     <div class="form-group">
         <label asp-for="Notes">Notes (25 characters max)</label>
         <input asp-for="Notes" type="text" class="form-control" id="notes" name="Notes" maxlength="25">
     </div>
     <br />
+
+    <!-- Submit button for the form -->
     <button type="submit" class="btn btn-primary">Submit</button>
+
+
+    <!-- Validation summary to display any form errors -->
+    <div asp-validation-summary="All"></div>
 
 </form>

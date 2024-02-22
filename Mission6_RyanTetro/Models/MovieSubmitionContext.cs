@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Mission06_RyanTetro.Models;
 
 namespace Mission6_RyanTetro.Models
 {
@@ -8,6 +9,7 @@ namespace Mission6_RyanTetro.Models
         { 
         }
 
-        public DbSet<Submition> Submitions { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }

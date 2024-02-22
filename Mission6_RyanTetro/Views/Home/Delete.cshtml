@@ -1,0 +1,78 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*  *@
+
+@model Movie
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Deletion</title>
+    <!-- Bootstrap CSS for styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Container for the confirmation content */
+        .confirmation-container {
+            max-width: 600px; /* Maximum width of the container */
+            margin: 50px auto; /* Center the container with automatic margins and add some space above and below */
+            padding: 20px; /* Padding inside the container */
+            border: 1px solid #dee2e6; /* Border around the container */
+            border-radius: 5px; /* Rounded corners for the container */
+            background-color: #f8f9fa; /* Light background color for the container */
+        }
+
+        /* Styling for the header section within the container */
+        .confirmation-header {
+            border-bottom: 1px solid #dee2e6; /* Bottom border for the header for separation */
+            margin-bottom: 20px; /* Space below the header */
+        }
+
+        /* Styling for the delete button */
+        .delete-btn {
+            background-color: #dc3545; /* Red background color indicating a dangerous action */
+            color: white; /* White text color for contrast */
+            border-color: #dc3545; /* Border color matching the background */
+        }
+
+            /* Hover effect for the delete button */
+            .delete-btn:hover {
+                background-color: #c82333; /* Slightly darker red on hover for feedback */
+                border-color: #bd2130; /* Matching border color for the hover state */
+            }
+
+        /* Styling for the cancel button */
+        .cancel-btn {
+            background-color: #6c757d; /* Gray background color for a neutral action */
+            color: white; /* White text color for contrast */
+            text-decoration: none; /* No underlining for the text */
+            padding: 0.375rem 0.75rem; /* Padding inside the button for spacing */
+            border-radius: 0.25rem; /* Rounded corners for the button */
+        }
+
+            /* Hover effect for the cancel button */
+            .cancel-btn:hover {
+                background-color: #5a6268; /* Slightly darker gray on hover for feedback */
+                color: white; /* Maintain white text color on hover */
+            }
+    </style>
+</head>
+<body>
+    <div class="confirmation-container">
+        <!-- Header section of the confirmation container -->
+        <div class="confirmation-header">
+            <h2>Confirm Deletion</h2> <!-- Main heading for the confirmation page -->
+        </div>
+        <h3>@Model.Title</h3> <!-- Displaying the title of the movie to be deleted -->
+        <form method="post">
+            <!-- Form for the deletion confirmation -->
+            <input type="hidden" asp-for="MovieId" /> <!-- Hidden field for the movie ID to identify which movie is being deleted -->
+            <button type="submit" class="btn delete-btn">Delete</button> <!-- Button to confirm deletion -->
+            <a href="@Url.Action("MovieList", "Home")" class="btn cancel-btn">Cancel</a> <!-- Link styled as a button to cancel the action and go back to the movie list -->
+        </form>
+    </div>
+</body>
+</html>
+
+

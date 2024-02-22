@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!-- Bind the view to a list of Movie objects -->
+@model List<Movie>
+
+<!-- Table to display movie details -->
+<table class="table table-striped">
+    <thead>
+        <!-- Table header defining the columns -->
+        <tr>
+            <td>Category</td>
+            <td>Title</td>
+            <td>Year</td>
+            <td>Director</td>
+            <td>Rating</td>
+            <td>Edited</td>
+            <td>Lent To</td>
+            <td>Copied To Plex</td>
+            <td>Notes</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Loop through each movie in the model and display its details -->
+        @foreach (var temp in Model)
+        {
+            <tr>
+                <!-- Display each property of the Movie object -->
+                <td>@temp.Category.CategoryName</td>
+                <td>@temp.Title</td>
+                <td>@temp.Year</td>
+                <td>@temp.Director</td>
+                <td>@temp.Rating</td>
+                <td>@temp.Edited</td>
+                <td>@temp.LentTo</td>
+                <td>@temp.CopiedToPlex</td>
+                <td>@temp.Notes</td>
+
+                <!-- Links for Edit and Delete actions, passing the MovieId as a route parameter -->
+                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@temp.MovieId">Edit</a></td>
+                <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@temp.MovieId">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+)
